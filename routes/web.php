@@ -12,9 +12,16 @@ Route::get('/csrf-token-refresh', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/account', [AccountController::class, 'index'])->name('account.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::post('/auth/unlink/{provider}', [OAuthController::class, 'unlink']);
+
+    #region Account
+    Route::get('/linked-accounts', [AccountController::class, 'linkedAccounts'])
+        ->name('account.linked_accounts');
+
+    Route::get('/linked-accounts/data', [AccountController::class, 'getLinkedAccounts'])
+        ->name('account.linked_accounts.data');
+    #endregion
 });
 
 require __DIR__ . '/auth.php';

@@ -13,7 +13,7 @@ import axios from "@/lib/axios";
 import { refreshCsrfToken } from "@/services/refreshCsrfToken";
 import { Head, router } from "@inertiajs/vue3";
 
-const props = defineProps<{
+defineProps<{
   title: string;
   canResetPassword: boolean;
   status: string | null;
@@ -36,8 +36,8 @@ async function loginWithGoogle() {
     }
 
     await openOAuthPopup({ url: providerUrl });
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    console.error(e);
     alert("Falha no login.");
   }
 }

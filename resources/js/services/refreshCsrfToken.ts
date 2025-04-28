@@ -6,7 +6,6 @@ export async function refreshCsrfToken() {
 
   if (newToken) {
     axios.defaults.headers.common["X-CSRF-TOKEN"] = newToken;
-    // Se quiser armazenar localmente também:
     document.querySelector('meta[name="csrf-token"]')?.setAttribute("content", newToken);
   }
 }

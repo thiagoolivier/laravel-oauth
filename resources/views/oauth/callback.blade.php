@@ -7,16 +7,14 @@
 <body>
     <script>
         if (window.opener) {
-            // Manda mensagem para a página principal
             window.opener.postMessage({ success: true }, window.location.origin);
 
-            // Fecha o pop-up
             window.close();
         } else {
             console.error('No opener window found.');
         }
     </script>
 
-    <p>Login realizado com sucesso. Você pode fechar esta janela.</p>
+    <p>Successfully logged in. You can close this window.</p>
 </body>
 </html>

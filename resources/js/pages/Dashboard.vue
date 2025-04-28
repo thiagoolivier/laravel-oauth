@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { Button } from "@/components/ui/button";
 import AppLayout from "@/layouts/AppLayout.vue";
 import { Link } from "@inertiajs/vue3";
+import { ExternalLink } from "lucide-vue-next";
 
 const links = [
-  { label: "Account", url: "/account", title: "Go to my account" },
-  { label: "Settings", url: "/settings", title: "Go to settings" },
+  { label: "Linked Accounts", url: "/linked-accounts", title: "Go to linked accounts page" },
 ];
 
 defineProps<{
@@ -20,12 +21,14 @@ defineProps<{
       <div class="grid grid-cols-3 gap-4">
         <Link
           v-for="link in links"
-          :key="link.label"
-          class="rounded-lg border bg-indigo-950 p-8 font-bold inset-ring-gray-400 transition-all hover:bg-indigo-900 hover:inset-ring-2"
+          :key="link.label"          
           :title="link.title"
           :href="link.url"
         >
-          {{ link.label }}
+          <Button>
+            {{ link.label }}
+            <ExternalLink />
+          </Button>
         </Link>
       </div>
     </div>
